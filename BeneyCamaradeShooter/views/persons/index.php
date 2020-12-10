@@ -24,6 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function($model){
+            return $model->age < 18 ? ['class' => 'danger'] : ['class' => 'info']; 
+        },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
