@@ -45,7 +45,8 @@ class Persons extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nom' => 'Nom',
             'age' => 'Age',
-            'offices_id' => 'Offices ID',
+            'offices_id' => 'Bureau',
+            'offices.label' => 'Bureau',
         ];
     }
 
