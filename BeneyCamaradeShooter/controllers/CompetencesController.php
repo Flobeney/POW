@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Persons;
-use app\models\PersonsSearch;
+use app\models\Competences;
+use app\models\CompetencesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PersonsController implements the CRUD actions for Persons model.
+ * CompetencesController implements the CRUD actions for Competences model.
  */
-class PersonsController extends Controller
+class CompetencesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class PersonsController extends Controller
     }
 
     /**
-     * Lists all Persons models.
+     * Lists all Competences models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PersonsSearch();
+        $searchModel = new CompetencesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PersonsController extends Controller
     }
 
     /**
-     * Displays a single Persons model.
+     * Displays a single Competences model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,18 +58,15 @@ class PersonsController extends Controller
     }
 
     /**
-     * Creates a new Persons model.
+     * Creates a new Competences model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Persons();
+        $model = new Competences();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //Sauver les compétences dans la table de liaison
-            $this->createCompetences($model, Yii::$app->request->post()["Persons"]["competences"]);
-
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -79,7 +76,7 @@ class PersonsController extends Controller
     }
 
     /**
-     * Updates an existing Persons model.
+     * Updates an existing Competences model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,12 +87,6 @@ class PersonsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //Enlever les compétences dans la table de liaison
-            $this->deleteCompetences($model);
-
-            //Sauver les compétences dans la table de liaison
-            $this->createCompetences($model, Yii::$app->request->post()["Persons"]["competences"]);
-
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -105,7 +96,7 @@ class PersonsController extends Controller
     }
 
     /**
-     * Deletes an existing Persons model.
+     * Deletes an existing Competences model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -113,48 +104,24 @@ class PersonsController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-
-        //Enlever les compétences dans la table de liaison
-        $this->deleteCompetences($model);
-
-        //Supprimer
-        $model->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Persons model based on its primary key value.
+     * Finds the Competences model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Persons the loaded model
+     * @return Competences the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Persons::findOne($id)) !== null) {
+        if (($model = Competences::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    //Méthode pour ajouter les compétences
-    private function createCompetences($model, $competences){
-        foreach ($competences as $competences_id) {
-            //Récupérer la compétence
-            $competence = \app\models\Competences::findOne(['id' => $competences_id]);
-            //Autre que null (non trouvé)
-            if($competence){
-                //Sauver la compétence
-                $model->link('competences', $competence);
-            }
-        }
-    }
-
-    //Méthode pour supprimer les compétences
-    private function deleteCompetences($model){
-        $model->unlinkAll('competences', true);
     }
 }

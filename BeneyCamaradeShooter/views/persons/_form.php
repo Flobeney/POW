@@ -1,12 +1,20 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
+//Offices
 //Fournisseur de données
-$dataprovider = (new \app\models\OfficesSearch())->search(null);
+$dpOffice = (new \app\models\OfficesSearch())->search(null);
 //Isoler les données voulues
-$lstOffices = \yii\helpers\ArrayHelper::map($dataprovider->getModels(), 'id', 'label');
+$lstOffices = ArrayHelper::map($dpOffice->getModels(), 'id', 'label');
+
+//Competences
+//Fournisseur de données
+$dpComp = (new \app\models\CompetencesSearch())->search(null);
+//Isoler les données voulues
+$lstComp = ArrayHelper::map($dpComp->getModels(), 'id', 'domaine');
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Persons */
@@ -22,6 +30,11 @@ $lstOffices = \yii\helpers\ArrayHelper::map($dataprovider->getModels(), 'id', 'l
     <?= $form->field($model, 'age')->textInput() ?>
 
     <?= $form->field($model, 'offices_id')->dropDownList($lstOffices) ?>
+
+    <?= $form->field($model, 'competences')->dropDownList(
+        $lstComp,
+        ['multiple' => 'multiple']
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

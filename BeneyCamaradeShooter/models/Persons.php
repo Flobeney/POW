@@ -59,4 +59,22 @@ class Persons extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Offices::className(), ['id' => 'offices_id']);
     }
+
+    /**
+     * Gets query for [[Competences]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompetences()
+    {
+        //Liaison multiple
+        return $this->hasMany(
+            Competences::className(), 
+            ['id' => 'competences_id']
+        )->viaTable(
+            //Table de liaison
+            'person_has_competence',
+            ['persons_id' => 'id']
+        );
+    }
 }

@@ -1,18 +1,17 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Persons */
+/* @var $model app\models\Competences */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Persons', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Competences', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="persons-view">
+<div class="competences-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,16 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'nom',
-            'age',
-            'offices.label',
-            [
-                'attribute' => 'competences',
-                'label' => 'Compétences',
-                'value' => function($model){
-                    return join(',', ArrayHelper::map($model->competences, 'id', 'domaine'));
-                }
-            ],
+            'domaine',
         ],
     ]) ?>
 
