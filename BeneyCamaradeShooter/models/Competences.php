@@ -11,6 +11,7 @@ use Yii;
  * @property string|null $domaine
  *
  * @property PersonHasCompetence[] $personHasCompetences
+ * @property Persons[] $persons
  */
 class Competences extends \yii\db\ActiveRecord
 {
@@ -51,5 +52,15 @@ class Competences extends \yii\db\ActiveRecord
     public function getPersonHasCompetences()
     {
         return $this->hasMany(PersonHasCompetence::className(), ['competences_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Persons]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPersons()
+    {
+        return $this->hasMany(Persons::className(), ['id' => 'persons_id'])->viaTable('person_has_competence', ['competences_id' => 'id']);
     }
 }

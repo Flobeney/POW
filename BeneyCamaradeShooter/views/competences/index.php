@@ -33,5 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+    <!-- Utilisation du widget -->
+    <?= app\widgets\Nuage::widget() ?>
 
 </div>
