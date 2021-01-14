@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Types */
 
-$this->title = 'Create Types';
+$this->title = 'Ajouter un type';
 $this->params['breadcrumbs'][] = ['label' => 'Types', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

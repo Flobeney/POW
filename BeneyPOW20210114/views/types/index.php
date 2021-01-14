@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Types', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Ajouter un type', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,8 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'type',
+			'type',
+			[
+                'attribute' => 'auteurs',
+                'label' => 'Nombre d\'occurences',
+                'value' => function($model){
+                    return count($model->auteurs);
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

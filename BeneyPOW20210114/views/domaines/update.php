@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Modifier le domaine : ' . $model->label;
 $this->params['breadcrumbs'][] = ['label' => 'Domaines', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->label, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Modifier';
 ?>
 <div class="domaines-update">
 
