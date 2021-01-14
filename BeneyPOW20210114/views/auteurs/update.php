@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Auteurs */
 
-$this->title = 'Update Auteurs: ' . $model->id;
+$this->title = 'Modifier l\'auteur : ' . $model->nom . ' ' . $model->prenom;
 $this->params['breadcrumbs'][] = ['label' => 'Auteurs', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->nom . ' ' . $model->prenom, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Modifier';
 ?>
 <div class="auteurs-update">
 

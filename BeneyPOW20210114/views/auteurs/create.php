@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Auteurs */
 
-$this->title = 'Create Auteurs';
+$this->title = 'Ajouter un auteur';
 $this->params['breadcrumbs'][] = ['label' => 'Auteurs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
