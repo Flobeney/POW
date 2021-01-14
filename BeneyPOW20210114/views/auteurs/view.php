@@ -3,6 +3,12 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+//Articles
+//Fournisseur de données
+$dpArticles = (new \app\models\ArticlesSearch())->search(null);
+$lstArticles = $dpArticles->getModels();
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Auteurs */
 
@@ -34,5 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'types.type',
         ],
     ]) ?>
+
+	<!-- Utilisation du widget -->
+	<?php
+		foreach ($lstArticles as $article) {
+			echo app\widgets\DisplayArticle::widget(['article' => $article]);
+		}
+	?>
 
 </div>
