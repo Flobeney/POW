@@ -49,10 +49,10 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'date_publication' => 'Date Publication',
+            'date_publication' => 'Date de publication',
             'titre' => 'Titre',
             'contenu' => 'Contenu',
-            'auteurs_id' => 'Auteurs ID',
+            'auteurs_id' => 'Auteur',
         ];
     }
 

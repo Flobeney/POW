@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Articles', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Ajouter un article', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,11 +26,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'date_publication',
             'titre',
-            'contenu:ntext',
-            'auteurs_id',
+			[
+                'attribute' => 'auteurs_id',
+                'label' => 'Auteur',
+                'value' => function($model){
+					$type = $model->auteurs->types != null ? ' (' . $model->auteurs->types->type . ')' : '';
+                    return $model->auteurs->nom . ' ' . $model->auteurs->prenom . $type;
+                }
+            ],
+			[
+                'attribute' => 'domaines',
+				'label' => 'Domaines',
+				'format' => 'html',
+                'value' => function($model){
+					$res = '<ul>';
+					foreach ($model->domaines as $domaine) {
+						$res .= '<li>' . $domaine->label . '</li>';
+					}
+					$res .= '</ul>';
+
+                    return $res;
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
