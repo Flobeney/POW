@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Domaines */
 
-$this->title = 'Create Domaines';
+$this->title = 'Ajouter un domaine';
 $this->params['breadcrumbs'][] = ['label' => 'Domaines', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
