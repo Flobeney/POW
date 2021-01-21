@@ -37,7 +37,7 @@ class DisplayArticle extends \yii\bootstrap\Widget
 					par '. ArrayHelper::getValue($this->article, 'auteurs.nom') . ' ' . ArrayHelper::getValue($this->article, 'auteurs.prenom') . '
 					</p>
 				</div>
-				<div>
+				<div style="margin: 20px;">
 					<p>
 					publié le '. ArrayHelper::getValue($this->article, 'date_publication') . '
 					</p>

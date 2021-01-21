@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use kartik\datecontrol\DateControl;
 
 //Auteurs
 //Fournisseur de données
@@ -25,13 +26,28 @@ $lstDomaines = ArrayHelper::map($dpDomaines->getModels(), 'id', 'label');
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'date_publication')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'date_publication')->widget(DateControl::classname(), [
+        'type' => 'date',
+        'ajaxConversion' => true,
+        'autoWidget' => true,
+        'widgetClass' => '',
+        'displayFormat' => 'php:d F Y',
+        'saveFormat' => 'php:Y-m-d',
+        'saveTimezone' => 'UTC',
+        'widgetOptions' => [
+            'pluginOptions' => [
+                'todayHighlight' => true,
+                'todayBtn' => true,
+                'autoclose' => true,
+            ]
+        ]
+    ]) ?>
 
     <?= $form->field($model, 'titre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'contenu')->textarea(['rows' => 6]) ?>
-
-	<?= $form->field($model, 'auteurs_id')->dropDownList($lstAuteurs) ?>
+    
+    <?= $form->field($model, 'auteurs_id')->dropDownList($lstAuteurs) ?>
 
 	<?= $form->field($model, 'domaines')->dropDownList(
         $lstDomaines,

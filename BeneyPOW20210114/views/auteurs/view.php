@@ -5,9 +5,10 @@ use yii\widgets\DetailView;
 
 //Articles
 //Fournisseur de données
-$dpArticles = (new \app\models\ArticlesSearch())->search(null);
+$params['ArticlesSearch']['auteurs_id'] = $model->id;
+$dpArticles = (new \app\models\ArticlesSearch())->search($params);
+$dpArticles->pagination = false;
 $lstArticles = $dpArticles->getModels();
-
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Auteurs */

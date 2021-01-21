@@ -19,14 +19,14 @@ USE `ep20210114`;
 -- Listage de la structure de la table ep20210114. articles
 CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_publication` varchar(45) NOT NULL,
+  `date_publication` date NOT NULL,
   `titre` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
   `auteurs_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_articles_auteurs` (`auteurs_id`),
   CONSTRAINT `FK_articles_auteurs` FOREIGN KEY (`auteurs_id`) REFERENCES `auteurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `auteurs` (
   PRIMARY KEY (`id`),
   KEY `FK_auteurs_types` (`types_id`),
   CONSTRAINT `FK_auteurs_types` FOREIGN KEY (`types_id`) REFERENCES `types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `domaines` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Les données exportées n'étaient pas sélectionnées.
 

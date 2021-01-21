@@ -34,9 +34,9 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             [['date_publication', 'titre', 'contenu', 'auteurs_id'], 'required'],
+            [['date_publication'], 'safe'],
             [['contenu'], 'string'],
             [['auteurs_id'], 'integer'],
-            [['date_publication'], 'string', 'max' => 45],
             [['titre'], 'string', 'max' => 255],
             [['auteurs_id'], 'exist', 'skipOnError' => true, 'targetClass' => Auteurs::className(), 'targetAttribute' => ['auteurs_id' => 'id']],
         ];
