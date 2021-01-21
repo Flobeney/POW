@@ -69,6 +69,9 @@ class ArticlesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			//Sauver les domaines dans la table de liaison
             $this->createDomaines($model, Yii::$app->request->post()["Articles"]["domaines"]);
+
+            //Alerte
+            Yii::$app->session->setFlash('success', 'L\'article a bien été créé');
 			
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -95,6 +98,9 @@ class ArticlesController extends Controller
 
             //Sauver les domaines dans la table de liaison
             $this->createDomaines($model, Yii::$app->request->post()["Articles"]["domaines"]);
+
+            //Alerte
+            Yii::$app->session->setFlash('success', 'L\'article a bien été modifié');
 			
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -120,6 +126,9 @@ class ArticlesController extends Controller
 
         //Supprimer
         $model->delete();
+    
+        //Alerte
+        Yii::$app->session->setFlash('success', 'L\'article a bien été supprimé');
 
         return $this->redirect(['index']);
     }
