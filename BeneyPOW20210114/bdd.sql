@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Listage de la structure de la base pour 20210114
-CREATE DATABASE IF NOT EXISTS `20210114` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `20210114`;
+-- Listage de la structure de la base pour ep20210114
+CREATE DATABASE IF NOT EXISTS `ep20210114` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ep20210114`;
 
--- Listage de la structure de la table 20210114. articles
+-- Listage de la structure de la table ep20210114. articles
 CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_publication` varchar(45) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
--- Listage de la structure de la table 20210114. articles_has_domaines
+-- Listage de la structure de la table ep20210114. articles_has_domaines
 CREATE TABLE IF NOT EXISTS `articles_has_domaines` (
   `articles_id` int(11) NOT NULL,
   `domaines_id` int(11) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `articles_has_domaines` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
--- Listage de la structure de la table 20210114. auteurs
+-- Listage de la structure de la table ep20210114. auteurs
 CREATE TABLE IF NOT EXISTS `auteurs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `auteurs` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
--- Listage de la structure de la table 20210114. domaines
+-- Listage de la structure de la table ep20210114. domaines
 CREATE TABLE IF NOT EXISTS `domaines` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(45) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `domaines` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
--- Listage de la structure de la table 20210114. types
+-- Listage de la structure de la table ep20210114. types
 CREATE TABLE IF NOT EXISTS `types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(45) NOT NULL,
